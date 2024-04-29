@@ -1,0 +1,5 @@
+    # run via cd > python3 /Users/delazeri/Python\ Projects/Screen\ Recorder/ScreenRecorder.py
+    
+    #python ScreenRecorder.py # to start
+
+    # error, runs but crashes
