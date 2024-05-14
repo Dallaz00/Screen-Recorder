@@ -6,18 +6,20 @@ import numpy as np
 import cv2
 from tkinter import messagebox
 
+
 class ScreenRecording:
-    def __init__(self, root):
-        self.root = root
+    def __init__(self, _root):
+        self.recording_thread = None
+        self.root = _root
         self.root.title("Screen Recording")
 
         self.start_button = tk.Button(self.root, text="Start Recording", command=self.start_recording)
         self.start_button.pack(pady=10)
 
-        self.stop_button = tk.Button(root, text="Stop Recording", command=self.stop_recording)
+        self.stop_button = tk.Button(_root, text="Stop Recording", command=self.stop_recording)
         self.stop_button.pack(pady=10)
 
-        self.time_label = tk.Label(root, text=" ", font=("Nunito", 12))
+        self.time_label = tk.Label(_root, text=" ", font=("Nunito", 12))
         self.time_label.pack(pady=10)
 
         self.recording = False
@@ -72,7 +74,7 @@ class ScreenRecording:
             elapsed_time = time.time() - self.start_time
             self.time_label.config(text=f"Recording time: {elapsed_time:.2f} seconds")
             self.time_label.update()
-   
+
     def save_video(self):
         # rename the recorded file with a timestamp
         current_time = time.strftime("%Y%m%d-%H%M%S")
@@ -84,6 +86,7 @@ class ScreenRecording:
             messagebox.showinfo("Video Saved", f"Video saved as {file_name}")
         except Exception as e:
             print(f"Failed to save video: {e}")
+
 
 if __name__ == "__main__":
     root = tk.Tk()
